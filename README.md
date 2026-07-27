@@ -175,7 +175,7 @@ model_provider = "leonis"
 
 [model_providers.leonis]
 name = "Leonis AI"
-base_url = "https://ai.svtun.cn/api/v1"
+base_url = "https://ai.svtun.cn/v1"
 wire_api = "responses"
 env_key = "LEONIS_API_KEY"
 ```
@@ -213,7 +213,7 @@ codex
 ```toml
 [model_providers.leonis]
 name = "Leonis AI"                        # 显示名，随便起
-base_url = "https://ai.svtun.cn/api/v1"   # 网关地址，注意结尾的 /v1
+base_url = "https://ai.svtun.cn/v1"   # 网关地址，注意结尾的 /v1
 wire_api = "responses"                    # responses | chat
 env_key = "LEONIS_API_KEY"                # 从哪个环境变量读 Key
 query_params = {}                         # 附加 URL 参数（Azure 需要）
@@ -231,7 +231,7 @@ stream_idle_timeout_ms = 300000           # 流式空闲超时(毫秒)
 ```toml
 [model_providers.leonis]
 name = "Leonis AI"
-base_url = "https://ai.svtun.cn/api/v1"
+base_url = "https://ai.svtun.cn/v1"
 wire_api = "chat"
 env_key = "LEONIS_API_KEY"
 ```
@@ -256,7 +256,7 @@ model_provider = "leonis"
 # 第三方网关
 [model_providers.leonis]
 name = "Leonis AI"
-base_url = "https://ai.svtun.cn/api/v1"
+base_url = "https://ai.svtun.cn/v1"
 wire_api = "responses"
 env_key = "LEONIS_API_KEY"
 
@@ -479,15 +479,15 @@ wire_api = "chat"        # 报 404 就改这个
 **第二常见：`base_url` 结尾少了或多了 `/v1`。**
 
 ```toml
-base_url = "https://ai.svtun.cn/api/v1"   # ✅
-base_url = "https://ai.svtun.cn/api"      # ❌ 少了 /v1
-base_url = "https://ai.svtun.cn/api/v1/"  # ❌ 多了尾斜杠
+base_url = "https://ai.svtun.cn/v1"   # ✅
+base_url = "https://ai.svtun.cn"      # ❌ 少了 /v1
+base_url = "https://ai.svtun.cn/v1/"  # ❌ 多了尾斜杠
 ```
 
 **验证网关端点：**
 
 ```bash
-curl -s https://ai.svtun.cn/api/v1/chat/completions \
+curl -s https://ai.svtun.cn/v1/chat/completions \
   -H "Authorization: Bearer $LEONIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"gpt-5.6-sol","messages":[{"role":"user","content":"hi"}],"max_tokens":16}'
